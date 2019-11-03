@@ -32,6 +32,7 @@ app.post("/ask", (req, res) => {
     let question = req.body.question
     try {
         let data = fs.readFileSync("data.json","utf8")
+        // Code them o day
     } catch (error) {
         let data = []
         let newQuestion = {
