@@ -14,11 +14,14 @@ app.set("view engine", "handlebars")
 
 // cai dat duong dan
 app.get("/", (req, res) => {
-
-    let data = JSON.parse(fs.readFileSync("data.json", "utf8"))
-    let question = data[Math.floor(Math.random() * data.length)]
-    console.log(question)
-    res.render('mainPage')
+    let rawData = fs.readFileSync("data.json","utf8")
+    let data = JSON.parse(rawData)
+    console.log(data)
+    let randomNumber = Math.floor(Math.random() * data.length)
+    let question = data[randomNumber]    
+    res.render("mainPage",{
+        questionData : question.questionContent
+    })
 })
 
 app.get("/ask", (req, res) => {
@@ -30,26 +33,64 @@ app.get("/ask", (req, res) => {
 
 app.post("/ask", (req, res) => {
     let question = req.body.question
+    let data
+
+    // try {
+    //     let rawData = fs.readFileSync("data.json", "utf8")
+    //     let data = JSON.parse(rawData)
+    //     let newQuestion = {
+    //         id: data.length,
+    //         questionContent: question,
+    //         questionAnswer: []
+    //     }
+    //     data.push(newQuestion)
+    //     let savedData = JSON.stringify(data)
+    //     fs.writeFile("data.json", savedData, (err) => {
+    //         if (err) { console.log(err) } else {
+    //             console.log("Saved")
+    //             res.render("askPage")
+    //         }
+    //     })
+    //     // Code them o day
+    // } catch (error) {
+    //     let data = []
+    //     let newQuestion = {
+    //         id: 0,
+    //         questionContent: question,
+    //         questionAnswer: []
+    //     }
+    //     data.push(newQuestion)
+    //     let savedData = JSON.stringify(data)
+    //     fs.writeFile('data.json', savedData, (err) => {
+    //         if (err) { console.log(err) } else {
+    //             console.log("Saved")
+    //             res.render('askPage')
+    //         }
+    //     })
+
+    // }
     try {
-        let data = fs.readFileSync("data.json","utf8")
-        // Code them o day
+        let rawData = fs.readFileSync("data.json", "utf8")
+        data = JSON.parse(rawData)
     } catch (error) {
-        let data = []
+        data = []
+
+    } finally {
         let newQuestion = {
-            id : 0 ,
+            id: data.length,
             questionContent: question,
             questionAnswer: []
         }
         data.push(newQuestion)
-        let savedData = JSON.stringify(data)
-        fs.writeFile('data.json',savedData,(err) => {
+        savedData = JSON.stringify(data)
+        fs.writeFile("data.json",savedData,(err) => {
             if (err) {console.log(err)} else {
                 console.log("Saved")
-                res.render('askPage')
+                res.render("askPage")
             }
         })
-
     }
+
 
 })
 
