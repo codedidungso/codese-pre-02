@@ -7,7 +7,7 @@ const fs = require("fs")
 let app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
-
+app.use(express.static("public"))
 //cai dat hien thi
 app.engine("handlebars", handlebars({ defaultLayout: "main" }))
 app.set("view engine", "handlebars")
@@ -95,7 +95,7 @@ app.post("/ask", (req, res) => {
 })
 
 //khoi tao server
-app.listen(5000, (err) => {
+app.listen(7000, (err) => {
     if (err) { console.log(err) } else {
         console.log("App listen at 5000")
     }

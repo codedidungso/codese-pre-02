@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Convert</h2>
+
+
+    <input oninput="myFunction()" type="number" id="var1">
+    <input type="number" id="var2">
+    <!-- <button onclick="myFunction()">Convert</button> -->
+    <div>
+        <h3>Du lieu quy doi</h3>
+        <input type="radio" name="convert1" value="1">mm
+        <input type="radio" name="convert1" value="2">cm
+        <input type="radio" name="convert1" value="3">dm
+        <input type="radio" name="convert1" value="4">m
+    </div>
+
+
+    <div>
+        <h3>Du lieu nhan duoc</h3>
+        <input type="radio" name="convert2" value="1">mm
+        <input type="radio" name="convert2" value="2">cm
+        <input type="radio" name="convert2" value="3">dm
+        <input type="radio" name="convert2" value="4">m
+    </div>
+
+
+
+    <script>
+        function myFunction() {
+            let var1 = document.getElementById("var1").value
+            let convert1 = getChecked("convert1")
+            let convert2 = getChecked("convert2")
+            let convertNumber = var1 * Math.pow(10, convert1 - convert2)
+            document.getElementById("var2").value = convertNumber
+        }
+        function getChecked(name) {
+            let arr = document.getElementsByName(name)
+            for (let index = 0; index < arr.length; index++) {
+                if (arr[index].checked == true) {
+                    console.log(arr[index].value)
+                    return arr[index].value
+                }
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>
