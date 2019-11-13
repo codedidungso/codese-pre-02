@@ -10,7 +10,16 @@ app.engine("handlebars", handlebars({ defaultLayout: "main" }))
 app.set("view engine", "handlebars")
 
 app.get("/", (req, res) => {
-    res.render("convert")
+    let renderHTML = ''
+    for (let index = 0; index < 100; index++) {
+        let elements = `<button >Button ${index +1 }</button>`
+        renderHTML += elements
+        
+    }
+    
+    res.render("convert",{
+        buttons: renderHTML
+    })
 })
 
 app.post("/", (req, res) => {
