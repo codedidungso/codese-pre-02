@@ -3,8 +3,26 @@ const express = require("express")
 const handlebars = require("express-handlebars")
 const bodyParser = require("body-parser")
 const fs = require("fs")
+const mongoose = require("mongoose")
+const dataSchema = require('./models/dataSchema')
+
+mongoose.connect("mongodb://localhost/demoPreWeb",{useNewUrlParser: true},(err) => {
+    if (err) {console.log(err)} else {
+        console.log("Database Connected")
+    }
+})
+
+// abc()
+
+
 
 let app = express()
+const homeRouter = require("./routers/homeRouter")
+const askRouter = require("./routers/askRouter")
+
+app.use("/",homeRouter)
+app.use("/",askRouter)
+
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static("public"))
@@ -12,87 +30,6 @@ app.use(express.static("public"))
 app.engine("handlebars", handlebars({ defaultLayout: "main" }))
 app.set("view engine", "handlebars")
 
-// cai dat duong dan
-app.get("/", (req, res) => {
-    let rawData = fs.readFileSync("data.json","utf8")
-    let data = JSON.parse(rawData)
-    console.log(data)
-    let randomNumber = Math.floor(Math.random() * data.length)
-    let question = data[randomNumber]    
-    res.render("mainPage",{
-        questionData : question.questionContent
-    })
-})
-
-app.get("/ask", (req, res) => {
-
-    res.render("askPage")
-})
-
-
-
-app.post("/ask", (req, res) => {
-    let question = req.body.question
-    let data
-
-    // try {
-    //     let rawData = fs.readFileSync("data.json", "utf8")
-    //     let data = JSON.parse(rawData)
-    //     let newQuestion = {
-    //         id: data.length,
-    //         questionContent: question,
-    //         questionAnswer: []
-    //     }
-    //     data.push(newQuestion)
-    //     let savedData = JSON.stringify(data)
-    //     fs.writeFile("data.json", savedData, (err) => {
-    //         if (err) { console.log(err) } else {
-    //             console.log("Saved")
-    //             res.render("askPage")
-    //         }
-    //     })
-    //     // Code them o day
-    // } catch (error) {
-    //     let data = []
-    //     let newQuestion = {
-    //         id: 0,
-    //         questionContent: question,
-    //         questionAnswer: []
-    //     }
-    //     data.push(newQuestion)
-    //     let savedData = JSON.stringify(data)
-    //     fs.writeFile('data.json', savedData, (err) => {
-    //         if (err) { console.log(err) } else {
-    //             console.log("Saved")
-    //             res.render('askPage')
-    //         }
-    //     })
-
-    // }
-    try {
-        let rawData = fs.readFileSync("data.json", "utf8")
-        data = JSON.parse(rawData)
-    } catch (error) {
-        data = []
-
-    } finally {
-        let newQuestion = {
-            id: data.length,
-            questionContent: question,
-            questionAnswer: []
-        }
-        data.push(newQuestion)
-        savedData = JSON.stringify(data)
-        fs.writeFile("data.json",savedData,(err) => {
-            if (err) {console.log(err)} else {
-                console.log("Saved")
-                res.render("askPage")
-            }
-        })
-    }
-
-
-})
 
 //khoi tao server
 app.listen(7000, (err) => {
