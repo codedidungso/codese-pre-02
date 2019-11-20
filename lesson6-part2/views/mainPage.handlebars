@@ -1,15 +1,22 @@
 <h1 style="text-align: center; margin-top:2em">
     {{questionData}}
+    {{id}}
 </h1>
 
 
 
 <div class="row" style="margin-top: 1em; position: relative">
     <div class="col">
-        <button style="position: absolute; margin: 0; left:50%" type="button" class="btn btn-secondary">Secondary</button>
+        <form action="/yes" method="POST">
+            <a href="/yes/{{id}}"> <button style="position: absolute; margin: 0; left:50%" class="btn btn-secondary">YES</button>
+            </a>
+        </form>
 
     </div>
     <div class="col">
-        <button style="position:absolute; margin:0; right:50%" type="button" class="btn btn-warning">Warning</button>   
+        <form action="/no" method="POST">
+
+            <button style="position:absolute; margin:0; right:50%" type="submit" class="btn btn-warning">NO</button>
+        </form>
     </div>
 </div>

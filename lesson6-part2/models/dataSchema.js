@@ -1,56 +1,17 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const questionSchema = new Schema({
-    questionContent: { type: String },
-    questionAnswers: []
-}, {
-    _id: true,
-    timestamps: true
-})
+const structure = {
+  questionContent: { type: String },
+  questionAnswers: []
+};
 
-let Question = mongoose.model("question", questionSchema)
+const options = {
+  _id: true,
+  timestamps: true
+};
+const questionSchema = new Schema(structure, options);
 
-let newQuestion = Question({
-    questionContent: "cau hoi moi",
-    questionAnswers: ['yes', `no`, "no"]
-})
+let QuestionModel = mongoose.model("question", questionSchema);
 
-// 4 imports function of a database: CRUD
-
-// CREATE 
-let createData = () => {
-    newQuestion.save().then(
-        valueReturn => {
-            console.log("saved ")
-        },
-        failValue => {
-            console.log("fail ")
-        }
-    )
-}
-
-// READ // RETRIEVE
-let readData = () => {
-    Question.find({}, (err, data) => {
-        console.log(data)
-    })
-}
-
-// UPDATE
-let updateData = () => {
-
-}
-
-
-// DELTE
-let deleteData = () => {
-
-}
-
-module.exports = {
-    sampleCreate: createData,
-    sampleRead: readData,
-    sampleUpdate: updateData,
-    sampleDelete: deleteData
-}
+module.exports = QuestionModel;
