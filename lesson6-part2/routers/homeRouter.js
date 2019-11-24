@@ -4,24 +4,11 @@ const fs = require("fs");
 const {
   sampleRead,
   asyncReadData,
-  updateByID
+  updateByID,
+  deleteQuestion
 } = require("../controllers/dataController");
 
-Router.get("/", (req, res) => {
-  // let rawData = fs.readFileSync("data.json", "utf8")
-  // let data = JSON.parse(rawData)
-  // console.log(data)
-  // let randomNumber = Math.floor(Math.random() * data.length)
-  // let question = data[randomNumber]
 
-  let callback = function(data) {
-    res.render("mainPage", {
-      questionData:
-        data[Math.floor(Math.random() * data.length)].questionContent
-    });
-  };
-  sampleRead(callback);
-});
 
 Router.get("/cauhoingaunhien", async (req, res) => {
   let data = await asyncReadData();
@@ -33,6 +20,7 @@ Router.get("/cauhoingaunhien", async (req, res) => {
 });
 
 Router.post("/yes", async (req, res) => {
+  console.log("req body: ",req.body)
   await updateByID(req.body.id, "yes");
   res.redirect("/cauhoingaunhien");
 });
@@ -41,6 +29,11 @@ Router.post("/no", async (req, res) => {
   await updateByID(req.body.id, "no");
   res.redirect("/cauhoingaunhien");
 });
+
+Router.post("/delete",async (req,res)=>{
+  await deleteQuestion(req.body.id)
+  res.redirect("/cauhoingaunhien")
+})
 
 // ES6: Map, Reduce, Filter
 // let answer = ["yes", "no"];

@@ -43,10 +43,10 @@ async function asyncReadData() {
 }
 
 async function updateByID(id, answer) {
-  let data = await QuestionModel.find({ _id: id });
+  let data = await QuestionModel.findById({ _id: id }); // findByID
   console.log("recv data from update: ", data);
-  data[0].questionAnswers.push(answer);
-  QuestionModel.updateOne({ _id: id }, data[0])
+  data.questionAnswers.push(answer); 
+  await QuestionModel.updateOne({ _id: id }, data) 
     .then(data => {
       console.log("update: ", data);
     })
@@ -55,9 +55,20 @@ async function updateByID(id, answer) {
     });
 }
 
+async function deleteQuestion(id) {
+  QuestionModel.findOneAndDelete({ _id: id }, (err, data) => {
+    if (err) {
+      console.log("delete error", err);
+    } else {
+      console.log("delete success", data);
+    }
+  });
+}
+
 module.exports = {
   sampleCreate: createData, //
   sampleRead: readData, //
   asyncReadData: asyncReadData, //
-  updateByID: updateByID //
+  updateByID: updateByID, //,
+  deleteQuestion: deleteQuestion
 };
