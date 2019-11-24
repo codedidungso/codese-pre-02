@@ -9,10 +9,8 @@ Router.get("/ask", (req, res) => {
 
 Router.post("/ask", (req, res) => {
   console.log(req.body);
-  //   sampleCreate(question);
-  res.render("mainPage", {
-    questionContent: "create cau hoi thanh cong "
-  });
+  sampleCreate(req.body.question);
+  res.redirect("/ask")
   // console.log(req.body)
   // let question = req.body.question
   // let data

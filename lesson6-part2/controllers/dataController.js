@@ -37,25 +37,6 @@ let readData = function(callback) {
   //   );
 };
 
-let updateData = function(newData) {
-  // QuestionModel.findByIdAndUpdate // _id
-  QuestionModel.update({}, newData).then(
-    value => {
-      console.log("updated");
-    },
-    fail => {
-      console.log("update fail");
-    }
-  );
-};
-
-let deleteData = id => {
-  QuestionModel.deleteOne({ _id: id }, err => {
-    console.log(err ? "Loi delete" : "Xoa thanh cong");
-  });
-};
-// 4 imports function of a database: CRUD
-
 async function asyncReadData() {
   let data = await QuestionModel.find({});
   return data;
@@ -63,16 +44,20 @@ async function asyncReadData() {
 
 async function updateByID(id, answer) {
   let data = await QuestionModel.find({ _id: id });
-  // doan nay dang loi 
-  // buon ngu vcl 
-  
+  console.log("recv data from update: ", data);
+  data[0].questionAnswers.push(answer);
+  QuestionModel.updateOne({ _id: id }, data[0])
+    .then(data => {
+      console.log("update: ", data);
+    })
+    .catch(err => {
+      console.log("update err: ", err);
+    });
 }
 
 module.exports = {
-  sampleCreate: createData,
-  sampleRead: readData,
-  sampleUpdate: updateData,
-  sampleDelete: deleteData,
-  asyncReadData: asyncReadData,
-  updateByID: updateByID
+  sampleCreate: createData, //
+  sampleRead: readData, //
+  asyncReadData: asyncReadData, //
+  updateByID: updateByID //
 };

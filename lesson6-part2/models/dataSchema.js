@@ -12,6 +12,6 @@ const options = {
 };
 const questionSchema = new Schema(structure, options);
 
-let QuestionModel = mongoose.model("question", questionSchema);
+let QuestionModel = mongoose.model("questions", questionSchema);
 
 module.exports = QuestionModel;
