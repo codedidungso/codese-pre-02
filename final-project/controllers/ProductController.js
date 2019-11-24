@@ -13,7 +13,7 @@ async function createProduct(product) {
 
 async function readAllProduct() {
   let allData = await ProductModel.find({});
-  let data;
+  let data = [];
   allData.forEach(element => {
     if (element.availableSize.length > 0) data.push(element);
   });

@@ -32,7 +32,9 @@ Router.get("/create-product", async (req, res) => {
     title: san_pham_moi.title
   });
 });
-Router.get("/read-product", (req, res) => {
+Router.get("/read-product", async (req, res) => {
+  let data = await readAllProduct();
+  console.log(data);
   res.render("mainPage");
 });
 Router.get("/update-product", (req, res) => {
