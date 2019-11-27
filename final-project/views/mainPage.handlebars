@@ -15,7 +15,16 @@
     <form action="/delete-product" method="GET">
         <button class="btn btn-primary" type="submit">DELETE</button>
     </form>
+    {{!-- {{{htmlContent}}} --}}
+    {{!-- for each  --}}
+    {{#each data}}
+        {{#if @first}}
+            <p>danh sach mat hang</p>
+        {{/if}}
+            <p>{{@index}}</p>
+            <p>{{sku}}</p>
+            <p>{{title}}</p>
+    {{/each}}
 
-    <p>{{sku}}</p>
-    <p>{{title}}</p>
+
 </div>

@@ -1,4 +1,5 @@
 const Router = require("express").Router();
+
 const {
   createProduct,
   readAllProduct,
@@ -32,11 +33,35 @@ Router.get("/create-product", async (req, res) => {
     title: san_pham_moi.title
   });
 });
+
 Router.get("/read-product", async (req, res) => {
   let data = await readAllProduct();
-  console.log(data);
-  res.render("mainPage");
+  let htmlContent = "";
+  data.forEach(element => {
+    htmlContent = htmlContent +
+      `
+    <br>
+    <p style="color:red;">${element.sku}</p>
+    <p>${element.title}</p>
+    
+    `;
+  });
+  // for(let i= 0;i<data.length;i++){
+  //   htmlContent = htmlContent +
+  //   `
+  //   <br>
+  //   <p style="color:red;">${data[i].sku}</p>
+  //   <p>${data[i].title}</p>
+
+  //   `
+  // }
+
+  res.render("mainPage", {
+    // htmlContent: htmlContent
+    data: data
+  });
 });
+
 Router.get("/update-product", (req, res) => {
   res.render("mainPage");
 });
