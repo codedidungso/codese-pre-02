@@ -10,7 +10,7 @@ Router.get("/ask", (req, res) => {
 Router.post("/ask", (req, res) => {
   console.log(req.body);
   //   sampleCreate(question);
-  res.render("mainPage", {
+    res.render("mainPage", {
     questionContent: "create cau hoi thanh cong "
   });
   // console.log(req.body)

@@ -1,25 +1,58 @@
-
-.label-container{
-    display: inline-block   ;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 0.8em;
-    width: 35px;
-    height: 35px
-    
+div {
+    display: block;
 }
 
-.label-container input {
+.main{
+    display: flex;
+    font-family: Roboto, sans-serif;
+    padding: 20px 2%;
+    margin: 50px 40px 0px;
+}
+
+.main .selection{
+ 
+    width: 20%;
+}
+
+.main .products{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.checkbox{
+    display: inline-block;
+}
+
+.checkbox label{
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    font-size: .8em;
+    border-radius: 50%;
+    line-height: 35px;
+    text-align: center;
+  
+}
+
+.checkbox label:hover span {
+    border: 1px solid #1b1a20;
+}
+
+.checkbox label input:checked~.checkmark{
+    background-color: #1b1a20;
+    color: #ececec;
+}
+
+.checkbox label input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height: 0;
-    width: 0;
-  }
+}
 
-.checkmark{
+.checkbox label .checkmark{
     position: absolute;
     top: 0;
     left: 0;
@@ -32,5 +65,225 @@
     color: #1b1a20;
     background-color: #ececec;
     border: 1px solid transparent;
+} 
 
+
+.item{
+    width: 25%;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 2em;
+    /* box-sizing: border-box; dun g cho truong hop width: 25%; */
+    position: relative;
+    cursor: pointer;
+  
+}
+.item:hover{
+    border: 1px solid #eee
+}
+
+.item img{
+    width: 100%;
+}
+.item p {
+    position: relative;
+    margin-top: 1em;
+    height: 50px;
+}
+
+.item p::before{
+    content: "";
+    width: 20px;
+    height: 2px;
+    background-color: #eabf00;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -10px;
+}
+
+.item .price b{
+    font-size: 1.5em;
+} 
+
+.item .buy-btn{
+    background-color: #1b1a20;
+    color: #fff;
+    padding: 15px 0;
+    margin-top: 10px;
+    cursor: pointer;
+    -webkit-transition: background-color .2s;
+    transition: background-color .2s;
+}
+
+.item:hover .buy-btn{
+    background-color: #eabf00;
+}
+
+.shopping{
+    position: fixed;
+    top: 0;     
+    right: -450px;
+    width: 450px;
+    height: 100%;
+    background-color: #1b1a20;
+    -webkit-transition: right .2s; 
+    transition: right .2s;
+}
+
+.shopping .bag{
+    position: absolute;
+    background-color: #000;
+    background-size: 50%;
+    left: -60px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    background-image: url(./img/bag.png);
+    background-repeat: no-repeat;
+    background-position: 50%;
+  
+}
+
+.shopping-header{
+    color: #ececec;
+    /* box-sizing: border-box; */
+    text-align: center;
+    padding: 45px 0;
+}
+
+.bag-header{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 15px;
+    background-image: url(./img/bag.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+}
+
+.title-header{
+    font-weight: 700;
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+.shopping-container{
+    position: relative;
+    min-height: 280px;
+    padding-bottom: 200px;
+}
+
+.empty-container{
+    color: #ececec;
+    text-align: center;
+    line-height: 40px;
+}
+
+.shopping-footer{
+    box-sizing: border-box;
+    padding: 5%;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    z-index: 2;
+    background-color: #1b1a20;
+}
+
+.shopping-footer .SUBTOTAL{
+    width: 20%;
+    color: #5b5a5e;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.shopping-footer .price{
+    width: 75%;
+  
+    text-align: right;
+    color: #eabf00;
+    font-size: 22px;
+    display: inline-block;
+   
+}
+
+.footer-buybtn{
+    color: #ececec;
+    text-transform: uppercase;
+    background-color: #0c0b10;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    cursor: pointer;
+    transition: background-color .2s;
+}
+
+.shopping-item{
+    position: relative;
+    padding: 5%;
+}
+
+.shopping-item::before {
+    content: "";
+    width: 90%;
+    height: 2px;
+    background-color: rgba(0,0,0,.2);
+    position: absolute;
+    top: 0;
+    left: 5%;
+}
+
+
+.item-img{
+    vertical-align: middle;
+    width: 15%;
+    margin-right: 3%;
+    display: inline-block;
+}
+
+.item-img img {
+    width: 100%;
+    height: auto;
+}
+
+.item-details {
+    display: inline-block;
+    width: 57%;
+}
+
+.item-details p {
+    color: #ececec;
+    margin: auto;
+}
+
+.item-price {
+    display: inline-block;
+    vertical-align: middle;
+    color: #eabf00;
+    text-align: right;
+    width: 22%;
+}
+
+.change-product-btn{
+    color: #b7b7b7;
+    border: 0;
+    background-color: #000;
+    width: 25px;
+    height: 25px;
+}
+
+.close-btn{
+    width: 50px;
+    height: 50px;
+    color: #ececec;
+    background-color: #1b1a20;
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    top: 0;
+    left: -50px;
+    cursor: pointer;
 }

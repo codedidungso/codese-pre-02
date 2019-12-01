@@ -1,0 +1,68 @@
+.main{
+    display: flex;
+}
+
+
+div {
+    display: block;
+}
+
+.selection{
+    width: 20%;
+}
+
+.products{
+    width: 80%;
+}
+
+.checkbox{
+    display: inline-block
+}
+
+.checkbox label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+}
+
+.checkbox label input{
+    position: absolute;
+    opacity: 0;
+}
+
+.checkbox label .checkmark{
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    font-size: .8em;
+    text-align: center;
+    background-color: #ececec;
+    border-radius: 50%;
+}
+
+.item {
+    width: 25%;
+    position: relative;
+    text-align: center;
+}
+
+.item img {
+    width: 100%;
+}
+
+.item p {
+    position: relative;
+    margin-top: 1em;
+    height: 50px;
+}
+
+.item .buy-btn{
+    background-color: #1b1a20;
+    color: #fff;
+    padding: 15px 0;
+    margin-top: 10px;
+    /* transition: background-color .2s; */
+}

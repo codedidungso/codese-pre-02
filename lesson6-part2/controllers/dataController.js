@@ -25,7 +25,7 @@ let readData = function(callback) {
       });
     } else {
       console.log("DATA:", data);
-      callback(data);
+      callback(null,data);
     }
   });
 
