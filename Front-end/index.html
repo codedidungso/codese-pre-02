@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="public/jquery-3.4.1.js"></script>
     <link rel="stylesheet" href="public/style.css">
 </head>
 
@@ -64,7 +65,6 @@
 
         </div>
         <div class="products">
-            <h3>Products</h3>
             <div class="item">
                 <img src="./public/img/anh1.jpg" alt="">
                 <p>Mot cai ao rat dep</p>
@@ -77,11 +77,106 @@
                     Mua ne
                 </div>
             </div>
+            <div class="item">
+                <img src="./public/img/anh1.jpg" alt="">
+                <p>Mot cai ao rat dep</p>
+                <div class="price">
+                    <small>$</small>
+                    <b>30</b>
+                    <span>.99</span>
+                </div>
+                <div class="buy-btn">
+                    Mua ne
+                </div>
+            </div>
+            <div class="item">
+                <img src="./public/img/anh1.jpg" alt="">
+                <p>Mot cai ao rat dep</p>
+                <div class="price">
+                    <small>$</small>
+                    <b>30</b>
+                    <span>.99</span>
+                </div>
+                <div class="buy-btn">
+                    Mua ne
+                </div>
+            </div>
+            <div class="item">
+                <img src="./public/img/anh1.jpg" alt="">
+                <p>Mot cai ao rat dep</p>
+                <div class="price">
+                    <small>$</small>
+                    <b>30</b>
+                    <span>.99</span>
+                </div>
+                <div class="buy-btn">
+                    Mua ne
+                </div>
+            </div>
+            <div class="item">
+                <img src="./public/img/anh1.jpg" alt="">
+                <p>Mot cai ao rat dep</p>
+                <div class="price">
+                    <small>$</small>
+                    <b>30</b>
+                    <span>.99</span>
+                </div>
+                <div class="buy-btn">
+                    Mua ne
+                </div>
+            </div>
+            <div class="item">
+                <img src="./public/img/anh1.jpg" alt="">
+                <p>Mot cai ao rat dep</p>
+                <div class="price">
+                    <small>$</small>
+                    <b>30</b>
+                    <span>.99</span>
+                </div>
+                <div class="buy-btn">
+                    Mua ne
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="shopping">
+        <div id="bag-button" class="bag"></div>
+        <div class="scroll">
+            <div class="shopping-header">
+                <span class="bag-header"></span>
+                <span class="title-header">Cart</span>
+            </div>
+            <div class="shopping-container">
+                <p class="empty-container">Khong co gi o day</p>
+            </div>
+            <div class="shopping-footer">
+                <div class="SUBTOTAL">
+                    SUBTOTAL
+                </div>
+                <div class="price">
+                    <p>$ 0.00</p>
+                </div>
+                <div class="footer-buybtn">
+                    Mua
+                </div>
 
+            </div>
+        </div>
     </div>
+
+    <script>
+        $(document).on("click","#bag-button", function(){
+            $("#bag-button").replaceWith("<div id='close-button' class='close-btn'>X</div>")
+            $(".shopping").css("right","0")
+        })
+
+        $(document).on("click","#close-button", function(){
+            $(".shopping").css("right","-450px")
+            $("#close-button").replaceWith("<div id='bag-button' class='bag'></div>")
+        })
+    </script>
+
 </body>
 
-</html>
+</html>x

@@ -9,10 +9,15 @@ Router.get("/ask", (req, res) => {
 
 Router.post("/ask", (req, res) => {
   console.log(req.body);
+<<<<<<< HEAD
   //   sampleCreate(question);
     res.render("mainPage", {
     questionContent: "create cau hoi thanh cong "
   });
+=======
+  sampleCreate(req.body.question);
+  res.redirect("/ask")
+>>>>>>> 0b02450a81ae119325b4323d6b651bffa1e95d4d
   // console.log(req.body)
   // let question = req.body.question
   // let data
